@@ -1,0 +1,55 @@
+<div class="filter">
+  <h2 class="my-3" style="text-align: center;">Filters</h2>
+
+  <div class="collapsible my-3">
+    <button class="collapsible-button" (click)="togglecolorCollapsed()">
+      <div>Color</div>
+    </button>
+    <div class="collapsible-content" [ngClass]="{'collapsed': colorCollapsed}">
+      <div class="form-check my-2" *ngFor="let color of colors">
+        <input class="form-check-input" type="radio" value="{{color}}" [(ngModel)]="selectedColor" name="color"
+          id="{{color}}" (change)="onRadioModelChange($event)">
+        <label class="form-check-label" for="{{color}}">
+          {{color}}
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="collapsible my-3">
+    <button class="collapsible-button" (click)="togglesizeCollapsed()">Size</button>
+    <div class="collapsible-content" [ngClass]="{'collapsed': sizeCollapsed}">
+      <div class="form-check my-2" *ngFor="let item of size">
+        <input class="form-check-input" type="radio" name="size" value="{{item}}" [(ngModel)]="selectedSize"
+          id="{{item}}" (change)="onRadioModelChange($event)">
+        <label class="form-check-label" for="{{item}}">
+          {{item}}
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="collapsible my-3">
+    <button class="collapsible-button" (click)="togglePriceRangeCollapsed()">Price</button>
+    <div class="collapsible-content" [ngClass]="{'collapsed': PriceRangeCollapsed}">
+      <label style="opacity: .5;" for="customRange2" class="form-label my-2">min&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        mix</label>
+      <div class="row">
+        <div class="col" style="width:1rem;">
+          <input type="number" class="form-control" id="min" name="min" placeholder="0"
+            (change)="onMinInputChange($event)">
+        </div>
+        <div class="col">
+          <input type="number" class="form-control" id="max" name="max" placeholder="700"
+            (change)="onMaxInputChange($event)">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-4" style="text-align: center;">
+    <button type="button" class="africanButton" (click)="getProductsByFilter()">Filter</button>
+  </div>
+
+
+</div>
